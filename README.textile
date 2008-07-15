@@ -4,8 +4,9 @@ Simple plugin to sniff inbound search terms from popular search engines
 
 h3. Installation
 
-Installation is easy from Github
+Installation is easy from "Github":http://github.com/squeejee/search_sniffer/tree
 
+	script/plugin install git://github.com/squeejee/search_sniffer.git
 
 
 h3. Usage
