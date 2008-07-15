@@ -1,0 +1,23 @@
+h2. SearchSniffer
+
+Simple plugin to sniff inbound search terms from popular search engines
+
+h3. Installation
+
+Installation is easy from Github
+
+
+
+h3. Usage
+
+
+	class ApplicationController < ActionController::Base
+		before_filter :sniff_referring_search
+		
+		...
+	end
+	
+The plugin populates the @@referring_search@ variable which can then be passed to a keyword highlighter or internal site search engine to pull related content.
+
+
+Copyright (c) 2008 Wynn Netherland, Squeejee, released under the MIT license
