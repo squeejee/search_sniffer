@@ -16,9 +16,7 @@ module Squeejee  #:nodoc:
         # uncomment out the line below to test
     		# request.env["HTTP_REFERER"] = "http://www.google.com/search?q=ruby+on+rails+houston&ie=utf-8&oe=utf-8&aq=t&rls=org.mozilla:en-US:official&client=firefox-a"
         referer = request.env["HTTP_REFERER"]
-        rs = ReferringSearch.new(referer)
-        @referring_search = rs.referring_search
-        @referring_search_raw = rs.raw
+        @referring_search = ReferringSearch.new(referer)
         true
       end # sniff_referring_search
     end # Module Controller Methods
@@ -26,16 +24,12 @@ module Squeejee  #:nodoc:
       
       class ReferringSearch
         
-        attr_accessor :search_referers
-        attr_accessor :stop_words
-        
-        attr_reader :referring_search
-        attr_reader :raw
+        attr_reader :search_terms # sanitized search terms
+        attr_reader :raw # original terms as typed by user
+        attr_reader :engine # search engine
       
         def initialize(referer)
-          # stop words is a variable
-          # .raw .original as they typed to_s, including blacklisted stuff
-          # .ref
+          
           @search_referers = {
                 :google     => [/^http:\/\/(www\.)?google.*/, 'q'],
                 :yahoo      => [/^http:\/\/search\.yahoo.*/, 'p'],
@@ -64,8 +58,8 @@ module Squeejee  #:nodoc:
               # Check if the referrer is a search engine we are targetting
               if (reg.match(referer))
 
-                # Highlight the Search Term Keywords on the page
-                #@javascripts.push('keyword_highlighter')
+                # set the search engine
+                @engine = k 
 
                 unless query_args.empty?
                   query_args.split("&").each do |arg|
@@ -73,8 +67,8 @@ module Squeejee  #:nodoc:
                     if pieces.length == 2 && pieces.first == query_param_name
                       unstopped_keywords = CGI.unescape(pieces.last)
                       @raw = unstopped_keywords
-                      @referring_search = unstopped_keywords.gsub(@stop_words, '').squeeze(' ')
-                      #logger.info("Referring Search Keywords: #{referring_search}")
+                      @search_terms = unstopped_keywords.gsub(@stop_words, '').squeeze(' ')
+                      #logger.info("Referring Search Keywords: #{search_terms}")
                       return true
                     end
                   end
@@ -88,7 +82,7 @@ module Squeejee  #:nodoc:
         
         # Return the referring search string instead of the object serialized into a string
         def to_s
-          return @referring_search
+          @search_terms
         end
         
       end # ReferringSearch
