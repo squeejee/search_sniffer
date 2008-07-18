@@ -18,9 +18,9 @@ h3. Usage
 		...
 	end
 	
-The plugin populates the @@referring_search@ object containing info that can be passed to a keyword highlighter or internal site search engine to pull related content.
+The plugin populates the @@referring_search@ object containing info that can be passed to a keyword highlighter or internal site search engine to pull related content. For an HTTP referer of @http://www.google.com/search?q=ruby+on+rails+houston&ie=utf-8&oe=utf-8&aq=t&rls=org.mozilla:en-US:official&client=firefox-a@@
  
-  # http://www.google.com/search?q=ruby+on+rails+houston&ie=utf-8&oe=utf-8&aq=t&rls=org.mozilla:en-US:official&client=firefox-a
+  
 	@referring_search.search_terms
 	 => "ruby rails houston" 
 	@referring_search.raw
