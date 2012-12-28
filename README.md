@@ -22,24 +22,25 @@ Or install it yourself as:
 ## Usage
 
 ```ruby
-  class ApplicationController < ActionController::Base
-    before_filter :sniff_referring_search
-    ...
-  end
+class ApplicationController < ActionController::Base
+  before_filter :sniff_referring_search
+  ...
+end
 ```
 
 The plugin populates the @@referring_search@ object containing info that can be passed to a keyword highlighter or internal site search engine to pull related content. For an HTTP referer of @http://www.google.com/search?q=ruby+on+rails+houston&ie=utf-8&oe=utf-8&aq=t&rls=org.mozilla:en-US:official&client=firefox-a@@
 
 ```ruby
-  @referring_search.search_terms
-   => "ruby rails houston"
-  @referring_search.raw
-   => "ruby on rails houston"
-  @referring_search.engine
-   => "google"
+@referring_search.search_terms
+ => "ruby rails houston"
+@referring_search.raw
+ => "ruby on rails houston"
+@referring_search.engine
+ => "google"
 ```
 
 Copyright (c) 2008 Squeejee, released under the MIT license
+
 Converted to Rails gem by Alexander Timofeev (https://github.com/ATimofeev) 2012
 
 ## Contributing
