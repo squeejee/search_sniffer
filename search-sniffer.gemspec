@@ -8,8 +8,8 @@ Gem::Specification.new do |gem|
   gem.version       = Search::Sniffer::VERSION
   gem.authors       = ["ATimofeev"]
   gem.email         = ["atimofeev@reactant.ru"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = %q{Simple plugin to sniff inbound search terms from popular search engines}
+  gem.summary       = %q{Squeejee search_sniffer plugin implementation}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($/)
