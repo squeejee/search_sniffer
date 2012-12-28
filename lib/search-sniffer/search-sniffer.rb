@@ -32,7 +32,7 @@ module Search
 
         @search_referers = {
               :google     => [/^http:\/\/(www\.)?google.*/, 'q'],
-              :google     => [/^http:\/\/(www\.)?yandex.*/, 'text'],
+              :yandex     => [/^http:\/\/(www\.)?yandex.*/, 'text'],
               :yahoo      => [/^http:\/\/search\.yahoo.*/, 'p'],
               :msn        => [/^http:\/\/search\.msn.*/, 'q'],
               :aol        => [/^http:\/\/search\.aol.*/, 'userQuery'],
